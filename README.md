@@ -6,3 +6,22 @@ So we thought of making an automatic motorised curtain which opens only after de
 # Following are our Objectives:
 1. To detect a human face using Raspberry Pi camera module.
 2. Controlling a motorized curtain based on number of faces detected.
+
+# Methodology
+1. Our project basically works on the principle of face detection.
+2. Raspberry Pi camera module captures an image and send it to raspberry pi.
+3. The image taken is converted into grayscale becauseimage in the form of grayscale can only be used to detect human face.
+4. “detectmultiscale” function used in the face cascade (available in imported cv2 module) will search for human faces in the image taken.
+5. If any human face is detected in that image,it return the list of detected faces(which is the list of rectangles Rect(x,y,w,h).
+6. Then signal is given to H-Bridge circuit to rotate the motors and open curtain
+
+# Conclusion
+1. Our involvement in the project since last four months made us realise we can automate and simplify our daily activities using face detection algorithm.
+2. Specifically our project “Automatic Curtain” (based on face detection) when used in real time, will significantly decrease the electricity bill generated.
+
+# Future Scope
+Project can be further improved 
+1. By controlling curtain after detecting a specific face of a person and not just by any human face.
+2. Also ,by including a light sensor in the project the curtain can be opened or closed according to the threshold limit set by the user. 
+
+
