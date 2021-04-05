@@ -4,7 +4,7 @@
 
 
 # introduction
-With technological advancement there are AC’s available which automatically maintains a particular temperature of the room even during owner’s absence . In case the owner forgets to close the curtain before he leaves for his office then sunlight can easily penetrate through the glass and make the room warmer.As a result the AC will consume more power to maintain the temperature set by the user.
+With technological advancement there are AC’s available which automatically maintains a particular temperature of the room even during owner’s absence . The compressor in the air conditioner is turned on and remains on until the room temperature decreases to be the same as the temperature of the thermostat. Once the desired temperature is reached, the compressor turns off until the room temperature increases again.In case the owner forgets to close the curtain before he leaves for his office then sunlight can easily penetrate through the glass and make the room warmer.As a result the AC will consume more power to maintain the temperature set by the user.
 So we thought of making an automatic motorised curtain which opens only after detecting a human face in the room. we are already done with the prototype and we are sure that its real time application will significantly decrease the electricity bill generated.
 
 # Following are our Objectives:
