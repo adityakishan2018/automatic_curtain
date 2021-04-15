@@ -28,4 +28,7 @@ Project can be further improved
 1. By controlling curtain after detecting a specific face of a person and not just by any human face.
 2. Also ,by including a light sensor in the project the curtain can be opened or closed according to the threshold limit set by the user. 
 
+# Demo Link
+https://www.youtube.com/watch?v=LMdrZr9hP0E
+
 
