@@ -4,6 +4,8 @@ import cv2
 import numpy
 import RPi.GPIO as gpio
 import time
+
+
 def init():
     gpio.setmode(gpio.BCM)
     gpio.setup(17,gpio.OUT)
@@ -29,43 +31,48 @@ def reverse(tf):
     time.sleep(tf)
     gpio.cleanup()
 
+flag=0
 
-#Create a memory stream so photos doesn't need to be saved in a files
-stream = io.BytesIO()
+while(True):
+    #Create a memory stream so photos doesn't need to be saved in a files
+    stream = io.BytesIO()
 
-#Get the picture (low resolution, so it should be quite fast)
-#Here you can also specify other parameters (e.g.:rotate the image)
-with picamera.PiCamera() as camera:
-    camera.resolution = (640, 320)
-    camera.capture(stream, format='jpeg')
+    #Get the picture (low resolution, so it should be quite fast)
+    #Here you can also specify other parameters (e.g.:rotate the image)
+    with picamera.PiCamera() as camera:
+        camera.resolution = (640, 320)
+        camera.capture(stream, format='jpeg')
+        
+    #Convert the picture into a numpy array
+    buff = numpy.fromstring(stream.getvalue(), dtype=numpy.uint8)
 
-#Convert the picture into a numpy array
-buff = numpy.fromstring(stream.getvalue(), dtype=numpy.uint8)
+    #Now creates an OpenCV image
+    image = cv2.imdecode(buff, 1)
 
-#Now creates an OpenCV image
-image = cv2.imdecode(buff, 1)
+    #Load a cascade file for detecting faces
+    face_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml')
 
-#Load a cascade file for detecting faces
-face_cascade = cv2.CascadeClassifier('/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml')
+    #Convert to grayscale
+    gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
 
-#Convert to grayscale
-gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    #Look for faces in the image using the loaded cascade file
+    faces = face_cascade.detectMultiScale(gray, 1.1, 5)
 
-#Look for faces in the image using the loaded cascade file
-faces = face_cascade.detectMultiScale(gray, 1.1, 5)
-
-print "Found "+str(len(faces))+" face(s)"
-
-
+    print "Found "+str(len(faces))+" face(s)"
 
 
-#Draw a rectangle around every found face
-for (x,y,w,h) in faces:
-    cv2.rectangle(image,(x,y),(x+w,y+h),(355,355,0),2)
 
-if str(len(faces))>=1:
-    forward(4)
-    reverse(2)
+
+    #Draw a rectangle around every found face
+    for (x,y,w,h) in faces:
+        cv2.rectangle(image,(x,y),(x+w,y+h),(355,355,0),2)
+        
+    if (str(len(faces))>=1 and (flag!=1)):
+        flag=1
+        forward(4)
+    else if(str(len(faces))<1 and flag!=0):
+        flag=0
+        reverse(2)
 
 #Save the result image
-cv2.imwrite('res.jpg',image)
+#cv2.imwrite('res.jpg',image)
