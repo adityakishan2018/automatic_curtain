@@ -1,6 +1,6 @@
 # **Face Detection Based Automatic Curtain**
 
-**Note : This is an Engineering Clinics project done at VIT-AP University during my second semester(WIN 2017-18).Any plagiarism of any sort complete or partial will be not accepted. The git and commit history and project submission date will be shared as proof.Also it will be easier to trace plagiarist if he/she belongs to the same institute.**
+**Note : This is an Engineering Clinics project done at VIT-AP University during my second semester(WIN 2017-18)..**
 
 
 # introduction
