@@ -26,7 +26,7 @@ So we thought of making an automatic motorised curtain which opens only after de
 # Future Scope
 Project can be further improved 
 1. By controlling curtain after detecting a specific face of a person and not just by any human face.
-2. Also ,by including a light sensor in the project the curtain can be opened or closed according to the threshold limit set by the user. 
+2. By providing an interface through which the user can switch between automatic and manual control. 
 
 # Demo Link
 https://www.youtube.com/watch?v=LMdrZr9hP0E
